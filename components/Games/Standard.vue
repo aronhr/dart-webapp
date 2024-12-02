@@ -105,7 +105,7 @@ const playerCardClasses = computed(() => {
           <div class="flex stats-horizontal shadow">
             <div
                 class="stat"
-                v-for="(throwValue, index) in getCurrentThrows(playerName)"
+                v-for="(throwValue, index) in player.winningScore"
                 :key="index"
             >
               <div class="stat-value">{{ throwValue }}</div>
