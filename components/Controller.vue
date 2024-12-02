@@ -80,7 +80,7 @@ const handleStartGame = () => {
 };
 
 const handleScore = (score, multiply) => {
-  console.log(score);
+  console.log(score, multiply);
   console.log(game.value);
   socket.emit('scoreUpdate', {
     dart: {
@@ -88,6 +88,10 @@ const handleScore = (score, multiply) => {
       multiplier: multiply,
     },
   });
+};
+
+const handleUndo = () => {
+  socket.emit('undo', { sessionId: sessionId.value });
 };
 
 const handleLeaveGame = () => {
@@ -236,6 +240,7 @@ const onDetect = (result) => {
           :players="game.currentPlayer"
           @insert-score="handleScore"
           @leave-game="handleLeaveGame"
+          @undo="handleUndo"
       />
     </div>
   </div>

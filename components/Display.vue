@@ -1,6 +1,7 @@
 <script setup>
 import QRCode from "qrcode.vue";
 import { socket } from "./socket";
+import Standard from "~/components/Games/Standard.vue";
 
 const sessionId = ref("");
 const game = ref(null);
@@ -149,7 +150,7 @@ onUnmounted(() => {
       </div>
     </div>
     <div v-else>
-      {{ game }}
+      <Standard :game="game" />
     </div>
   </div>
 </template>
