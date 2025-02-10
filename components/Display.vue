@@ -114,6 +114,9 @@ onUnmounted(() => {
   socket.off("gameStateUpdate", handleGameStateUpdate);
   socket.off("playerJoined", handlePlayerJoined);
 });
+
+const host = () => `${window.location.origin}/controller?sessionId=${sessionId.value}`;
+
 </script>
 
 <template>
@@ -142,7 +145,7 @@ onUnmounted(() => {
               <GameCard v-if="gameType" :game="gameType" class="mt-5" />
             </div>
             <div v-else>
-              <QRCode background="#191E24" foreground="#A6ADBB" render-as="svg" :value="'http://192.168.50.183:3000/controller?sessionId=' + sessionId" :size="300" level="H"/>
+              <QRCode background="#191E24" foreground="#A6ADBB" render-as="svg" :value="host()" :size="300" level="H"/>
               <p class="text-2xl">Session ID: {{ sessionId }}</p>
             </div>
           </p>
