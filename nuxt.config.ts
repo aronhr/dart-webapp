@@ -13,7 +13,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      SOCKET_SERVER_URL: 'http://192.168.50.183:5000', // Replace with your server URL
+      SOCKET_SERVER_URL: 'https://app-dart-backend-neu.azurewebsites.net/', // Replace with your server URL
     },
   },
   components: {
