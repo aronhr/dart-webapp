@@ -201,7 +201,7 @@ const onDetect = (result) => {
             </span>
             <p class="py-3">
               <div v-for="(player, index) in players" :key="index" class="avatar placeholder ml-1">
-                <div :style="'background:' + player.color" class="text-neutral-content w-16 rounded-full">
+                <div :style="'background:' + player.color" class="text-white w-16 rounded-full">
                   <span class="text-xl">{{ player.initials }}</span>
                 </div>
               </div>
@@ -233,8 +233,7 @@ const onDetect = (result) => {
       </div>
     </div>
 
-    <div v-else >
-      {{ game }}
+    <div v-else>
       <StandardController
           :availableScores="game.availableScores"
           :players="game.currentPlayer"

@@ -34,46 +34,48 @@ const calculateScore = (value) => {
 </script>
 
 <template>
-  <div class="mx-auto max-w-96">
-    <div class="score-input">
-      <div v-for="(row, index) in scoresInRows" :key="index" class="score-row">
+  <div class="min-h-screen flex items-center justify-center">
+    <div class="mx-auto">
+      <div class="score-input">
+        <div v-for="(row, index) in scoresInRows" :key="index" class="score-row">
+          <button
+              v-for="score in row"
+              :key="score"
+              @click="calculateScore(score)"
+              :disabled="score === 25 && triple"
+              class="btn btn-primary btn-keypad text-white score-button"
+          >
+            {{ score }}
+          </button>
+        </div>
+      </div>
+      <div class="text-center mb-6">
         <button
-          v-for="score in row"
-          :key="score"
-          @click="calculateScore(score)"
-          :disabled="score === 25 && triple"
-          class="btn btn-primary btn-lg text-white score-button"
+            @click="calculateScore(0)"
+            class="btn btn-keypad mr-2 text-white btn-primary"
         >
-          {{ score }}
+          0
+        </button>
+        <button
+            @click="double = !double"
+            class="btn btn-keypad mr-2 text-white"
+            :class="` ${double ? 'btn-success' : 'btn-primary'}`"
+            :disabled="triple"
+        >
+          Double
+        </button>
+        <button
+            @click="triple = !triple"
+            class="btn btn-keypad mr-2 text-white"
+            :class="` ${triple ? 'btn-success' : 'btn-primary'}`"
+            :disabled="double"
+        >
+          Triple
         </button>
       </div>
+      <button @click="$emit('undo')" class="btn btn-warning btn-block text-white leave-game-button mb-3">Undo</button>
+      <button @click="$emit('leaveGame')" class="btn btn-error btn-block text-white leave-game-button">Leave Game</button>
     </div>
-    <div class="text-center mb-6">
-      <button
-          @click="calculateScore(0)"
-          class="btn btn-lg mr-2 text-white btn-primary"
-      >
-        0
-      </button>
-      <button
-          @click="double = !double"
-          class="btn btn-lg mr-2 text-white"
-          :class="` ${double ? 'btn-success' : 'btn-primary'}`"
-          :disabled="triple"
-      >
-        Double
-      </button>
-      <button
-          @click="triple = !triple"
-          class="btn btn-lg mr-2 text-white"
-          :class="` ${triple ? 'btn-success' : 'btn-primary'}`"
-          :disabled="double"
-      >
-        Triple
-      </button>
-    </div>
-    <button @click="$emit('undo')" class="btn btn-warning btn-block text-white leave-game-button mb-3">Undo</button>
-    <button @click="$emit('leaveGame')" class="btn btn-error btn-block text-white leave-game-button">Leave Game</button>
   </div>
 </template>
 
@@ -93,4 +95,12 @@ const calculateScore = (value) => {
 button.active {
   background-color: lightblue;
 }
+
+.btn-keypad {
+  width: 8rem;
+  height: 8rem;
+  font-size: 1.5rem;
+  border-radius: 0.5rem;
+}
+
 </style>

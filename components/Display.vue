@@ -143,8 +143,8 @@ onUnmounted(() => {
             </div>
             <div v-else>
               <QRCode background="#191E24" foreground="#A6ADBB" render-as="svg" :value="'http://192.168.50.183:3000/controller?sessionId=' + sessionId" :size="300" level="H"/>
+              <p class="text-2xl">Session ID: {{ sessionId }}</p>
             </div>
-            <p class="text-2xl">Session ID: {{ sessionId }}</p>
           </p>
         </div>
       </div>
